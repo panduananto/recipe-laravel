@@ -17,4 +17,9 @@ class RecipeController extends Controller
     {
         return view('pages.detail')->with('recipe', Recipe::findOrFail($id));
     }
+
+    public function create()
+    {
+        return view('pages.create');
+    }
 }
