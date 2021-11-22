@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\RecipeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/recipe');
 
 Route::prefix('recipe')->name('recipe.')->group(function() {
-    Route::get('/', function() {
-        return view('pages.index');
-    })->name('index');
+    Route::get('/', [RecipeController::class, 'index'])->name('index');
 });
