@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
+Route::redirect('/', '/recipe');
+
+Route::prefix('recipe')->name('recipe.')->group(function() {
+    Route::get('/', function() {
+        return view('pages.index');
+    })->name('index');
 });

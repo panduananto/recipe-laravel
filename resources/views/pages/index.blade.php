@@ -1,4 +1,6 @@
 @extends('layouts.app')
 @section('content')
-  <p class="text-2xl font-bold text-gray-900">Init</p>
+  <div class="max-w-screen-xl px-8 mx-auto mt-14">
+    
+  </div>
 @endsection
