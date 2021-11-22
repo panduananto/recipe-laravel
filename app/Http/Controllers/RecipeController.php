@@ -12,4 +12,9 @@ class RecipeController extends Controller
     {
         return view('pages.index')->with('recipes', Recipe::all());
     }
+
+    public function show($id)
+    {
+        return view('pages.detail')->with('recipe', Recipe::findOrFail($id));
+    }
 }
