@@ -3,7 +3,7 @@
   <div class="max-w-5xl px-8 mx-auto space-y-4 mt-14">
     <h1 class="mb-8 text-3xl font-extrabold text-gray-900">Add new recipe</h1>
     <p class="mb-8 text-sm font-medium text-red-600">* required field</p>
-    <form action="" method="POST">
+    <form action="{{route('recipe.store')}}" method="POST">
       @csrf
       <div class="grid grid-cols-6 gap-6 mb-8">
         <div class="col-span-6 md:col-span-2 lg:col-span-3">

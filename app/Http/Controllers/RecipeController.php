@@ -22,4 +22,21 @@ class RecipeController extends Controller
     {
         return view('pages.create');
     }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|max:30|',
+            'description' => 'required',
+        ]);
+
+        $recipe = new Recipe();
+
+        $recipe->title = $validated['title'];
+        $recipe->description = $validated['description'];
+
+        $recipe->save();
+
+        return redirect(route('recipe.index'));
+    }
 }

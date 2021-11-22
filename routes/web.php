@@ -20,5 +20,6 @@ Route::redirect('/', '/recipe');
 Route::prefix('recipe')->name('recipe.')->group(function() {
     Route::get('/', [RecipeController::class, 'index'])->name('index');
     Route::get('/create', [RecipeController::class, 'create'])->name('create');
+    Route::post('/', [RecipeController::class, 'store'])->name('store');
     Route::get('/{id}', [RecipeController::class, 'show'])->name('show');
 });
