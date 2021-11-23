@@ -3,7 +3,7 @@
   <div class="max-w-5xl px-8 mx-auto space-y-4 mt-14">
     <h1 class="mb-8 text-3xl font-extrabold text-gray-900">Add new recipe</h1>
     <p class="mb-8 text-sm font-medium text-red-600">* required field</p>
-    <form action="{{route('recipe.store')}}" method="POST">
+    <form action="{{route('recipe.store')}}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="grid grid-cols-6 gap-6 mb-8">
         <div class="col-span-6 md:col-span-2 lg:col-span-3">
@@ -27,6 +27,18 @@
             class="{{$errors->has('description') ? 'border-red-600' : 'border-gray-300'}} w-full rounded-lg"
           ></textarea>
           @error('description')
+            <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
+          @enderror
+        </div>
+        <div class="col-span-6 md:col-span-4">
+          <label for="image" class="block mb-1 text-base font-medium text-gray-900">Upload thumbnail image</label>
+          <div class="relative">
+            <input
+              type="file" name="image" autocomplete="off"
+              class="{{$errors->has('image') ? 'border-red-600' : 'border-gray-300'}} mb-4 block w-full overflow-hidden text-gray-900 bg-white border rounded-lg cursor-pointer focus:ring-blue-600 focus:outline-none focus:ring-2 focus:border-transparent"
+            >
+          </div>
+          @error('image')
             <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
           @enderror
         </div>
