@@ -13,7 +13,7 @@
       </div>
     </div>
     @endif
-    <form action="" method="POST">
+    <form action="{{route('login.authenticate')}}" method="POST">
       @csrf
       <div class="mb-8 space-y-6">
         <div>

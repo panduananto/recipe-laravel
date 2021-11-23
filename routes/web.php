@@ -21,6 +21,7 @@ Route::redirect('/', '/recipe');
 
 Route::prefix('login')->name('login.')->group(function() {
     Route::get('/', [LoginController::class, 'index'])->name('index');
+    Route::post('/', [LoginController::class, 'authenticate'])->name('authenticate');
 });
 
 Route::prefix('register')->name('register.')->group(function() {
