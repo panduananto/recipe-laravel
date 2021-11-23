@@ -16,7 +16,7 @@
           <a href="#" class="block w-full px-4 py-2 font-light text-left text-gray-700 hover:bg-gray-100">Dashboard</a>
         </div>
         <div class="py-1">
-          <form action="" method="POST">
+          <form action="{{route('logout')}}" method="POST">
             @csrf
             <button type="submit" class="block w-full px-4 py-2 font-light text-left text-gray-700 hover:bg-gray-100">Logout</button>
           </form>

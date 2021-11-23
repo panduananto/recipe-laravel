@@ -24,6 +24,8 @@ Route::prefix('login')->name('login.')->group(function() {
     Route::post('/', [LoginController::class, 'authenticate'])->name('authenticate');
 });
 
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 Route::prefix('register')->name('register.')->group(function() {
     Route::get('/', [RegisterController::class, 'index'])->name('index');
     Route::post('/', [RegisterController::class, 'store'])->name('store');
