@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,14 @@ use App\Http\Controllers\RecipeController;
 */
 
 Route::redirect('/', '/recipe');
+
+Route::prefix('login')->name('login.')->group(function() {
+    Route::get('/', [LoginController::class, 'index'])->name('index');
+});
+
+Route::prefix('register')->name('register.')->group(function() {
+    Route::get('/', [RegisterController::class, 'index'])->name('index');
+});
 
 Route::prefix('recipe')->name('recipe.')->group(function() {
     Route::get('/', [RecipeController::class, 'index'])->name('index');
