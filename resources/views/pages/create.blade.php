@@ -18,6 +18,23 @@
             <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
           @enderror
         </div>
+        <div class="col-span-6 md:col-span-2 lg:col-span-1">
+          <label for="category_id" class="block mb-1 text-base font-medium text-gray-900">
+            Category<span class="{{$errors->has('title') ? 'text-red-600' : 'text-gray-900'}}">*</span>
+          </label>
+          <select name="category_id" id="category_id" class="w-full border-gray-300 rounded-lg">
+            @foreach($categories as $category)
+              @if(old('category_id') === (string)$category->id)
+                <option value="{{$category->id}}" selected>{{$category->name}}</option>
+              @else
+                <option value="{{$category->id}}">{{$category->name}}</option>
+              @endif
+            @endforeach
+          </select>
+          @error('category_id')
+            <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
+          @enderror
+        </div>
         <div class="col-span-6 md:col-span-4">
           <label for="description" class="block mb-1 text-base font-medium text-gray-900">
             Description<span class="{{$errors->has('title') ? 'text-red-600' : 'text-gray-900'}}">*</span>
