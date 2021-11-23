@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>recipebook</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <script src="{{ asset('js/app.js') }}" defer></script>
   </head>
   <body class="flex flex-col min-h-full">
     @include('layouts.header')
