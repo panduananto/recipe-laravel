@@ -5,7 +5,7 @@
       <h3 class="text-3xl font-extrabold text-gray-900">Register</h3>
       <p class="text-gray-900">Already have an account? <a href="{{route('login.index')}}" class="font-medium text-blue-600 hover:underline">Log in here</a></p>
     </div>
-    <form action="" method="POST">
+    <form action="{{route('register.store')}}" method="POST">
       @csrf
       <div class="mb-8 space-y-6">
         <div>

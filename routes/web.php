@@ -25,6 +25,7 @@ Route::prefix('login')->name('login.')->group(function() {
 
 Route::prefix('register')->name('register.')->group(function() {
     Route::get('/', [RegisterController::class, 'index'])->name('index');
+    Route::post('/', [RegisterController::class, 'store'])->name('store');
 });
 
 Route::prefix('recipe')->name('recipe.')->group(function() {
