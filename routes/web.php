@@ -19,14 +19,14 @@ use App\Http\Controllers\RegisterController;
 
 Route::redirect('/', '/recipe');
 
-Route::prefix('login')->name('login.')->group(function() {
+Route::prefix('login')->name('login.')->middleware('guest')->group(function() {
     Route::get('/', [LoginController::class, 'index'])->name('index');
     Route::post('/', [LoginController::class, 'authenticate'])->name('authenticate');
 });
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('register')->name('register.')->group(function() {
+Route::prefix('register')->name('register.')->middleware('guest')->group(function() {
     Route::get('/', [RegisterController::class, 'index'])->name('index');
     Route::post('/', [RegisterController::class, 'store'])->name('store');
 });
