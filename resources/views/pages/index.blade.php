@@ -19,6 +19,9 @@
                   <a href="{{route('recipe.show', ['id' => $recipe->id])}}" class="block text-base font-extrabold text-gray-900 truncate hover:underline">{{$recipe->title}}</a>
                   <p class="mb-4 text-sm text-gray-900 truncate">{{$recipe->description}}</p>
                   <p class="text-sm text-blue-600">{{$recipe->category->name}}</p>
+                  <p class="text-xs text-gray-700 truncate">
+                    By <span class="font-medium text-gray-900">{{$recipe->user->name}}</span>
+                  </p>
                 </div>
               </div>
               @endforeach
