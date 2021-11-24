@@ -38,6 +38,10 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(functi
     Route::get('/recipe', [DashboardRecipeController::class, 'index'])->name('recipe.index');
     Route::get('/recipe/create', [DashboardRecipeController::class, 'create'])->name('recipe.create');
     Route::post('/recipe', [DashboardRecipeController::class, 'store'])->name('recipe.store');
+    Route::get('/recipe/{id}', [DashboardRecipeController::class, 'show'])->name('recipe.show');
+    Route::get('/recipe/{id}/edit', [DashboardRecipeController::class, 'edit'])->name('recipe.edit');
+    Route::put('/recipe/{id}', [DashboardRecipeController::class, 'update'])->name('recipe.update');
+    Route::delete('/recipe/{id}', [DashboardRecipeController::class, 'destroy'])->name('recipe.destroy');
 });
 
 Route::prefix('recipe')->name('recipe.')->group(function() {

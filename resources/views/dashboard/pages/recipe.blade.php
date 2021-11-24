@@ -42,9 +42,13 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center justify-end space-x-4">
-                        <a href="#" class="text-sm font-medium text-blue-600">Preview</a>
-                        <a href="#" class="text-sm font-medium text-blue-600">Edit</a>
-                        <a href="#" class="text-sm font-medium text-blue-600">Delete</a>
+                        <a href="{{route('dashboard.recipe.show', ['id' => $recipe->id])}}" class="text-sm font-medium text-blue-600">Preview</a>
+                        <a href="{{route('dashboard.recipe.edit', ['id' => $recipe->id])}}" class="text-sm font-medium text-blue-600">Edit</a>
+                        <form action="{{route('dashboard.recipe.destroy', ['id' => $recipe->id])}}" method="POST">
+                          @method('DELETE')
+                          @csrf
+                          <button type="submit" class="text-sm font-medium text-blue-600">Delete</button>
+                        </form>
                       </div>
                     </td>
                   </tr>
