@@ -80,3 +80,7 @@
     margin-inline-end: 1rem;
   }
 }
+
+[x-cloak] {
+  display: none !important;
+}

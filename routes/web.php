@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DashboardProfileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\RegisterController;
@@ -29,6 +30,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::prefix('register')->name('register.')->middleware('guest')->group(function() {
     Route::get('/', [RegisterController::class, 'index'])->name('index');
     Route::post('/', [RegisterController::class, 'store'])->name('store');
+});
+
+Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function() {
+    Route::get('/profile', [DashboardProfileController::class, 'index'])->name('profile.index');
 });
 
 Route::prefix('recipe')->name('recipe.')->group(function() {
