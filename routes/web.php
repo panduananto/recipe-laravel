@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardProfileController;
+use App\Http\Controllers\DashboardRecipeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\RegisterController;
@@ -34,11 +35,12 @@ Route::prefix('register')->name('register.')->middleware('guest')->group(functio
 
 Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function() {
     Route::get('/profile', [DashboardProfileController::class, 'index'])->name('profile.index');
+    Route::get('/recipe', [DashboardRecipeController::class, 'index'])->name('recipe.index');
+    Route::get('/recipe/create', [DashboardRecipeController::class, 'create'])->name('recipe.create');
+    Route::post('/recipe', [DashboardRecipeController::class, 'store'])->name('recipe.store');
 });
 
 Route::prefix('recipe')->name('recipe.')->group(function() {
     Route::get('/', [RecipeController::class, 'index'])->name('index');
-    Route::get('/create', [RecipeController::class, 'create'])->name('create');
-    Route::post('/', [RecipeController::class, 'store'])->name('store');
     Route::get('/{id}', [RecipeController::class, 'show'])->name('show');
 });
