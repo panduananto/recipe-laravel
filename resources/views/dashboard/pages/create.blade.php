@@ -10,7 +10,7 @@
           Title<span class="{{$errors->has('title') ? 'text-red-600' : 'text-gray-900'}}">*</span>
         </label>
         <input
-          type="text" name="title" autocomplete="off" value="{{old('title')}}"
+          type="text" name="title" autocomplete="off" placeholder="Delicious chicken soup" value="{{old('title')}}"
           class="{{$errors->has('title') ? 'border-red-600' : 'border-gray-300'}} w-full rounded-lg"
         >
         @error('title')
@@ -36,7 +36,8 @@
           Description<span class="{{$errors->has('title') ? 'text-red-600' : 'text-gray-900'}}">*</span>
         </label>
         <textarea
-          name="description" rows="1" autocomplete="off" value="{{old('description')}}"
+          name="description" rows="4" autocomplete="off" placeholder="Write a story about your recipe - who insipre you to create this recipe, what makes this recipe unique and special?"
+          value="{{old('description')}}"
           class="{{$errors->has('description') ? 'border-red-600' : 'border-gray-300'}} w-full rounded-lg"
         ></textarea>
         @error('description')
@@ -94,6 +95,43 @@
         @error('image')
           <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
         @enderror
+      </div>
+      <div class="col-span-6 md:col-span-4">
+        <fieldset>
+          <legend class="block mb-1 text-base font-medium text-gray-900">Ingredients</legend>
+          <div class="grid grid-cols-3 gap-x-1">
+            <div class="col-span-3">
+              <div class="flex items-stretch gap-1">
+                <div class="flex-auto w-full">
+                  <label for="" class="sr-only"></label>
+                  <input
+                    type="text" name="" autocomplete="off" placeholder="Garlic"
+                    class="block w-full border-gray-300 rounded-l-lg"
+                  >
+                </div>
+                <div class="flex-auto">
+                  <label for="" class="sr-only"></label>
+                  <input
+                    type="text" name="" autocomplete="off" placeholder="1 clove"
+                    class="block w-full border-gray-300 rounded-r-lg"
+                  >
+                </div>
+                <div class="flex gap-1 ml-1">
+                  <button class="px-2 text-green-600 bg-green-200 rounded-lg hover:bg-green-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <button class="px-2 text-red-600 bg-red-200 rounded-lg hover:bg-red-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
       </div>
     </div>
     <div class="flex flex-row gap-x-4">
