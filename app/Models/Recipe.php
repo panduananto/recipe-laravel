@@ -9,6 +9,10 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'ingredients' => 'array',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
