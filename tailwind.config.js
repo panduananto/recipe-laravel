@@ -14,6 +14,10 @@ module.exports = {
         '2/4': '50%',
         '3/4': '75%',
       },
+      height: {
+        'screen-20': 'calc(100vh - 5rem)',
+        'screen-20-1': 'calc(100vh - 5rem - 1px)',
+      },
     },
     fontFamily: {
       sans: ['Inter', ...defaultTheme.fontFamily.sans],

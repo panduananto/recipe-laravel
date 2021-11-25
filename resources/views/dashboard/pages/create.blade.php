@@ -102,14 +102,14 @@
           <div class="grid grid-cols-3 gap-x-1">
             <div class="col-span-3">
               <div class="flex items-stretch gap-1">
-                <div class="flex-auto w-full">
+                <div class="relative flex-auto w-full">
                   <label for="" class="sr-only"></label>
                   <input
                     type="text" name="" autocomplete="off" placeholder="Garlic"
                     class="block w-full border-gray-300 rounded-l-lg"
                   >
                 </div>
-                <div class="flex-auto">
+                <div class="relative flex-auto">
                   <label for="" class="sr-only"></label>
                   <input
                     type="text" name="" autocomplete="off" placeholder="1 clove"

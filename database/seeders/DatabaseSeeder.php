@@ -93,6 +93,76 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1,
                 'user_id' => 1,
             ],
+            [
+                'title' => 'Risol ayam',
+                'description' =>
+                    'Resep risol ayam dengan kulit yang garing serta isian ayam yang juicy, lembut dan gurih...',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category_id' => 5,
+                'user_id' => 1,
+            ],
+            [
+                'title' => 'Brownies cokelat',
+                'description' =>
+                    'Ini adalah resep brownies cokelat yang lembut seperti busa dengan rasa cokelat murni yang manis.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category_id' => 4,
+                'user_id' => 1,
+            ],
+            [
+                'title' => 'Banana pancakes',
+                'description' =>
+                    'Banana pancakes sangat nikmat disantap untuk sarapan dengan gizi pisang yang memberikan banyak energi, cocok untuk memulai hari!',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category_id' => 1,
+                'user_id' => 1,
+            ],
+            [
+                'title' => 'Muffin cokelat',
+                'description' =>
+                    'Kue muffin cokelat yang manis ditabur chocochip yang menambah kemanisannya!',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category_id' => 5,
+                'user_id' => 1,
+            ],
+            [
+                'title' => 'Nasi goreng Hongkong',
+                'description' => 'Resep nasi goreng Hongkong yang gurih...',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category_id' => 1,
+                'user_id' => 1,
+            ],
+            [
+                'title' => 'Nasi goreng Hongkong',
+                'description' => 'Resep nasi goreng Hongkong yang gurih...',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category_id' => 1,
+                'user_id' => 1,
+            ],
+            [
+                'title' => 'Ikan gurame goreng tepung',
+                'description' =>
+                    'Ikan gurame goreng tepung yang gurih dan lezat, cocok untuk menu makan siang!',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category_id' => 2,
+                'user_id' => 1,
+            ],
+            [
+                'title' => 'Salad buah',
+                'description' =>
+                    'Salad buah adalah makanan yang sangat bergizi, cocok bagi yang ingin diet!!',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category_id' => 1,
+                'user_id' => 1,
+            ],
         ]);
     }
 }
