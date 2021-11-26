@@ -36,6 +36,8 @@ class DashboardRecipeController extends Controller
             'title' => 'required|max:30|',
             'description' => 'required',
             'image' => 'nullable|file|image|max:1024',
+            'ingredients.*.name' => 'required',
+            'ingredients.*.amount' => 'required',
             'category_id' => 'required',
         ]);
 
@@ -43,17 +45,19 @@ class DashboardRecipeController extends Controller
 
         $recipe->title = $validated['title'];
         $recipe->description = $validated['description'];
-        $recipe->category_id = $validated['category_id'];
-        $recipe->user_id = Auth::id();
 
         if ($request->file('image')) {
             $validated['image'] = $request->file('image')->store('/images/recipes');
             $recipe->image = $validated['image'];
         }
 
+        $recipe->ingredients = $validated['ingredients'];
+        $recipe->category_id = $validated['category_id'];
+        $recipe->user_id = Auth::id();
+
         $recipe->save();
 
-        return redirect(route('dashboard.pages.recipe'));
+        return redirect(route('dashboard.recipe.index'));
     }
 
     public function edit($id)

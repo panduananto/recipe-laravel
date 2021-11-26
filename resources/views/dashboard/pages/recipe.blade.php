@@ -2,7 +2,7 @@
 @section('content')
   <div class="flex flex-row items-center justify-between mb-4">
     <p class="text-3xl font-extrabold">My recipes</p>
-    <a href="{{route('dashboard.recipe.create')}}" class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Add new recipe</a>
+    <a x-on:click="sessionStorage.clear()" href="{{route('dashboard.recipe.create')}}" class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Add new recipe</a>
   </div>
   <div class="flex flex-col lg:shadow lg:rounded-lg">
     <div class="overflow-x-auto">

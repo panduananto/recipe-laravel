@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -142,6 +141,12 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'ingredients.*.name' => [
+            'required' => 'Each :attribute field must be filled',
+        ],
+        'ingredients.*.amount' => [
+            'required' => 'Each :attribute field must be filled',
+        ],
     ],
 
     /*
@@ -155,6 +160,8 @@ return [
     |
     */
 
-    'attributes' => [],
-
+    'attributes' => [
+        'ingredients.*.name' => 'ingredient name and amount.',
+        'ingredients.*.amount' => 'ingredient name and amount.',
+    ],
 ];
