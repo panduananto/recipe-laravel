@@ -141,11 +141,14 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'ingredients.*.id' => [
+            'required' => 'Each :attribute field must be filled.',
+        ],
         'ingredients.*.name' => [
-            'required' => 'Each :attribute field must be filled',
+            'required' => 'Each :attribute field must be filled.',
         ],
         'ingredients.*.amount' => [
-            'required' => 'Each :attribute field must be filled',
+            'required' => 'Each :attribute field must be filled.',
         ],
     ],
 
@@ -161,7 +164,8 @@ return [
     */
 
     'attributes' => [
-        'ingredients.*.name' => 'ingredient name and amount.',
-        'ingredients.*.amount' => 'ingredient name and amount.',
+        'ingredients.*.id' => 'id',
+        'ingredients.*.name' => 'ingredient name and amount',
+        'ingredients.*.amount' => 'ingredient name and amount',
     ],
 ];

@@ -37,9 +37,8 @@
         </label>
         <textarea
           name="description" rows="4" autocomplete="off" placeholder="Write a story about your recipe - who insipre you to create this recipe, what makes this recipe unique and special?"
-          value="{{old('description')}}"
           class="{{$errors->has('description') ? 'border-red-600' : 'border-gray-300'}} w-full rounded-lg"
-        ></textarea>
+        >{{old('description')}}</textarea>
         @error('description')
           <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
         @enderror
@@ -114,7 +113,7 @@
             this.ingredients = ingredientTemp;
           },
           handleAddIngredient() {
-            this.ingredients = [...this.ingredients, {id: generateUuid()}];
+            this.ingredients = [...this.ingredients, {id: generateUuid(), name: '', amount: ''}];
           },
           handleRemoveIngredient(id) {
             const ingredientTemp = [...this.ingredients];
@@ -135,6 +134,10 @@
               <div class="grid grid-cols-3 gap-x-1">
                 <div class="col-span-3">
                   <div class="flex items-stretch gap-1">
+                    <div class="relative hidden">
+                      <label x-bind:for="'ingredients[' + index + '][id]'" class="sr-only"></label>
+                      <input type="hidden" x-bind:name="'ingredients[' + index + '][id]'" x-bind:value="ingredient.id">
+                    </div>
                     <div class="relative flex-auto w-full">
                       <label x-bind:for="'ingredients[' + index + '][name]'" class="sr-only"></label>
                       <input

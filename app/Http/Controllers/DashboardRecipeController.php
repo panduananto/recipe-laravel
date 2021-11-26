@@ -36,6 +36,7 @@ class DashboardRecipeController extends Controller
             'title' => 'required|max:30|',
             'description' => 'required',
             'image' => 'nullable|file|image|max:1024',
+            'ingredients.*.id' => 'required',
             'ingredients.*.name' => 'required',
             'ingredients.*.amount' => 'required',
             'category_id' => 'required',
@@ -79,13 +80,14 @@ class DashboardRecipeController extends Controller
             'title' => 'required|max:30|',
             'description' => 'required',
             'image' => 'nullable|file|image|max:1024',
+            'ingredients.*.id' => 'required',
+            'ingredients.*.name' => 'required',
+            'ingredients.*.amount' => 'required',
             'category_id' => 'required',
         ]);
 
         $recipe->title = $validated['title'];
         $recipe->description = $validated['description'];
-        $recipe->category_id = $validated['category_id'];
-        $recipe->user_id = Auth::id();
 
         if ($request->file('image')) {
             if ($recipeOldImage) {
@@ -95,6 +97,10 @@ class DashboardRecipeController extends Controller
             $validated['image'] = $request->file('image')->store('/images/recipes');
             $recipe->image = $validated['image'];
         }
+
+        $recipe->ingredients = $validated['ingredients'];
+        $recipe->category_id = $validated['category_id'];
+        $recipe->user_id = Auth::id();
 
         $recipe->save();
 
@@ -113,5 +119,14 @@ class DashboardRecipeController extends Controller
         $recipe->delete();
 
         return redirect(route('dashboard.recipe.index'));
+    }
+
+    public function getIngredients($id)
+    {
+        $ingredients = Recipe::select('ingredients')
+            ->where('id', $id)
+            ->get();
+
+        return response()->json($ingredients);
     }
 }

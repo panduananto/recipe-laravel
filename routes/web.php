@@ -42,7 +42,9 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(functi
     Route::get('/recipe/{id}/edit', [DashboardRecipeController::class, 'edit'])->name('recipe.edit');
     Route::put('/recipe/{id}', [DashboardRecipeController::class, 'update'])->name('recipe.update');
     Route::delete('/recipe/{id}', [DashboardRecipeController::class, 'destroy'])->name('recipe.destroy');
+    Route::get('/recipe/{id}/ingredients', [DashboardRecipeController::class, 'getIngredients'])->name('recipe.ingredients');
 });
+
 
 Route::prefix('recipe')->name('recipe.')->group(function() {
     Route::get('/', [RecipeController::class, 'index'])->name('index');

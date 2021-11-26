@@ -37,7 +37,7 @@
           Description<span class="{{$errors->has('title') ? 'text-red-600' : 'text-gray-900'}}">*</span>
         </label>
         <textarea
-          name="description" rows="1" autocomplete="off"
+          name="description" rows="4" autocomplete="off"
           class="{{$errors->has('description') ? 'border-red-600' : 'border-gray-300'}} w-full rounded-lg"
         >{{old('description', $recipe->description)}}</textarea>
         @error('description')
@@ -104,6 +104,94 @@
           </div>
         @endif
         @error('image')
+          <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
+        @enderror
+      </div>
+      <div x-data="uuid" class="col-span-6 md:col-span-4">
+        <fieldset x-data="{
+          ingredients: $persist([]).as('ingredients').using(sessionStorage),
+          errors: {{ Js::from($errors->get('ingredients.*')) }},
+          handleChangeIngredient(event, index) {
+            let { name, value } = event.target;
+            const nameString = name.substring(name.length - 5, name.length).slice(0, -1);
+            const amountString = name.substring(name.length - 7, name.length).slice(0, -1); 
+            const ingredientTemp = [...this.ingredients];
+
+            if (name.includes('name')) {
+              ingredientTemp[index][nameString] = value;
+            } else {
+              ingredientTemp[index][amountString] = value;
+            }
+
+            this.ingredients = ingredientTemp;
+          },
+          handleAddIngredient() {
+            this.ingredients = [...this.ingredients, {id: generateUuid(), name: '', amount: ''}];
+          },
+          handleRemoveIngredient(id) {
+            const ingredientTemp = [...this.ingredients];
+
+            ingredientTemp.splice(
+              this.ingredients.findIndex((ingredient) => ingredient.id === id),
+              1
+            );
+
+            this.ingredients = ingredientTemp;
+          }
+        }" x-init="ingredients = await getIngredients({{$recipe->id}})">
+          <legend class="block text-base font-medium text-gray-900">
+            Ingredients<span class="{{$errors->has('title') ? 'text-red-600' : 'text-gray-900'}}">*</span>
+          </legend>
+          <div class="space-y-1">
+            <template x-for="(ingredient, index) in ingredients" :key="ingredient.id">
+              <div class="grid grid-cols-3 gap-x-1">
+                <div class="col-span-3">
+                  <div class="flex items-stretch gap-1">
+                    <div class="relative hidden">
+                      <label x-bind:for="'ingredients[' + index + '][id]'" class="sr-only"></label>
+                      <input type="hidden" x-bind:name="'ingredients[' + index + '][id]'" x-bind:value="ingredient.id">
+                    </div>
+                    <div class="relative flex-auto w-full">
+                      <label x-bind:for="'ingredients[' + index + '][name]'" class="sr-only"></label>
+                      <input
+                        type="text" x-bind:name="'ingredients[' + index + '][name]'" autocomplete="off" placeholder="Garlic"
+                        x-bind:value="ingredient.name" x-on:change="handleChangeIngredient($event, index)"
+                        :class="errors['ingredients.' + index + '.name'] ? 'border-red-600' : 'border-gray-300'"
+                        class="block w-full rounded-l-lg"
+                      >
+                    </div>
+                    <div class="relative flex-auto">
+                      <label x-bind:for="'ingredients[' + index + '][amount]'" class="sr-only"></label>
+                      <input
+                        type="text" x-bind:name="'ingredients[' + index + '][amount]'" autocomplete="off" placeholder="1 clove"
+                        x-bind:value="ingredient.amount" x-on:change="handleChangeIngredient($event, index)"
+                        :class="errors['ingredients.' + index + '.amount'] ? 'border-red-600' : 'border-gray-300'"
+                        class="block w-full rounded-r-lg"
+                      >
+                    </div>
+                    <div class="flex gap-1 ml-1">
+                      <template x-if="ingredients.length - 1 === index">
+                        <button type="button" x-on:click="handleAddIngredient()" class="px-2 text-green-600 bg-green-200 rounded-lg hover:bg-green-300">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                          </svg>
+                        </button>
+                      </template>
+                      <template x-if="ingredients.length !== 1">
+                        <button type="button" x-on:click="handleRemoveIngredient(ingredient.id)" class="px-2 text-red-600 bg-red-200 rounded-lg hover:bg-red-300">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
+                          </svg>
+                        </button>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </fieldset>
+        @error('ingredients.*')
           <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
         @enderror
       </div>
