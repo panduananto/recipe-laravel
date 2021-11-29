@@ -85,6 +85,7 @@ class DashboardRecipeController extends Controller
             'ingredients.*.id' => 'required',
             'ingredients.*.name' => 'required',
             'ingredients.*.amount' => 'required',
+            'body_text' => 'required',
             'category_id' => 'required',
         ]);
 
@@ -101,6 +102,7 @@ class DashboardRecipeController extends Controller
         }
 
         $recipe->ingredients = $validated['ingredients'];
+        $recipe->body_text = $validated['body_text'];
         $recipe->category_id = $validated['category_id'];
         $recipe->user_id = Auth::id();
 

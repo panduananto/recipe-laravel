@@ -195,6 +195,16 @@
           <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
         @enderror
       </div>
+      <div class="col-span-6 md:col-span-4 trix-content-form">
+        <label for="description" class="block mb-1 text-base font-medium text-gray-900">
+          Post<span class="{{$errors->has('body_text') ? 'text-red-600' : 'text-gray-900'}}">*</span>
+        </label>
+        <input id="body_text" type="hidden" name="body_text" value="{{old('body_text', $recipe->body_text)}}">
+        <trix-editor class="trix-content" input="body_text" placeholder="You can write about how you should prepare and cook this recipe - explain it briefly to the readers so they cook it properly and have a delicious meals :)"></trix-editor>      
+        @error('body_text')
+          <p class="mt-2 text-sm font-light text-red-600">{{$message}}</p>
+        @enderror
+      </div>
     </div>
     <div class="flex flex-row gap-x-4">
       <a href="{{route('dashboard.recipe.index')}}" class="flex-1 px-4 py-2 font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg md:flex-none hover:bg-gray-100 hover:text-blue-700">Cancel</a>
