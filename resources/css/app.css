@@ -60,8 +60,12 @@
     src: url('/public/fonts/Inter-ExtraBold.ttf') format('ttf');
   }
 
+  .trix-content-form .trix-content {
+    @apply px-4 py-2;
+  }
+
   .trix-content {
-    @apply w-full px-4 py-2 bg-white border-gray-300 rounded-lg focus:border-blue-600 focus:border-2;
+    @apply w-full bg-white border-gray-300 rounded-lg focus:border-blue-600 focus:border-2;
   }
 
   .trix-content:empty::before {

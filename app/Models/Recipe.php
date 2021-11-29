@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Tonysm\RichTextLaravel\Casts\AsRichTextContent;
 
 class Recipe extends Model
 {
@@ -11,6 +12,7 @@ class Recipe extends Model
 
     protected $casts = [
         'ingredients' => 'array',
+        'body_text' => AsRichTextContent::class,
     ];
 
     public function category()
