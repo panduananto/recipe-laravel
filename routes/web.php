@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardProfileController;
 use App\Http\Controllers\DashboardRecipeController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +50,6 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(functi
 Route::prefix('recipe')->name('recipe.')->group(function() {
     Route::get('/', [RecipeController::class, 'index'])->name('index');
     Route::get('/{id}', [RecipeController::class, 'show'])->name('show');
+    
+    Route::post('/comment/{id}', [CommentController::class, 'store'])->name('comment.store');
 });
