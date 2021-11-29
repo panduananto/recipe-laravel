@@ -61,11 +61,11 @@
   }
 
   .trix-content-form .trix-content {
-    @apply px-4 py-2;
+    @apply px-4 py-2 bg-white border-gray-300 rounded-lg focus:border-blue-600 focus:border-2;
   }
 
   .trix-content {
-    @apply w-full bg-white border-gray-300 rounded-lg focus:border-blue-600 focus:border-2;
+    @apply w-full;
   }
 
   .trix-content:empty::before {
