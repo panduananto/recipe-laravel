@@ -59,6 +59,37 @@
     font-display: swap;
     src: url('/public/fonts/Inter-ExtraBold.ttf') format('ttf');
   }
+
+  .trix-content {
+    @apply w-full px-4 py-2 bg-white border-gray-300 rounded-lg focus:border-blue-600 focus:border-2;
+  }
+
+  .trix-content:empty::before {
+    content: attr(placeholder);
+    @apply text-gray-500;
+  }
+
+  .trix-content h1 {
+    font-size: 1.25rem !important;
+    line-height: 1.25rem !important;
+    @apply mb-4 font-semibold leading-5;
+  }
+
+  .trix-content a:not(.no-underline) {
+    @apply underline;
+  }
+
+  .trix-content ul {
+    @apply pl-6 list-disc;
+  }
+
+  .trix-content ol {
+    @apply pl-6 list-decimal;
+  }
+
+  .trix-content img {
+    margin: 0 auto;
+  }
 }
 
 @layer components {
@@ -83,4 +114,28 @@
 
 [x-cloak] {
   display: none !important;
+}
+
+.trix-content .attachment-gallery > .attachment,
+.trix-content .attachment-gallery > rich-text-attachment {
+  flex: 1 0 33%;
+  padding: 0 0.5em;
+  max-width: 33%;
+}
+
+.trix-content .attachment-gallery.attachment-gallery--2 > .attachment,
+.trix-content .attachment-gallery.attachment-gallery--2 > rich-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > .attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > rich-text-attachment {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.trix-content rich-text-attachment .attachment {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+trix-toolbar .trix-button-row [data-trix-button-group='file-tools'] {
+  display: none;
 }

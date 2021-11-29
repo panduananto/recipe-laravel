@@ -3,6 +3,7 @@ import persist from '@alpinejs/persist';
 import { v4 as uuidv4 } from 'uuid';
 
 require('./bootstrap');
+import './libs/trix.js';
 
 window.Alpine = Alpine;
 
