@@ -127,7 +127,7 @@
           }
         }">
           <legend class="block text-base font-medium text-gray-900">
-            Ingredients<span class="{{$errors->has('title') ? 'text-red-600' : 'text-gray-900'}}">*</span>
+            Ingredients<span class="{{$errors->has('ingredients.*') ? 'text-red-600' : 'text-gray-900'}}">*</span>
           </legend>
           <div class="space-y-1">
             <template x-for="(ingredient, index) in ingredients" :key="ingredient.id">

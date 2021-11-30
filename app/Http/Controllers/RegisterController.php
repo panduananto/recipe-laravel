@@ -22,13 +22,9 @@ class RegisterController extends Controller
             'password' => 'required|min:8|max:255',
         ]);
 
-        $user = new User();
+        $validated['password'] = Hash::make($validated['password']);
 
-        $user->name = $validated['name'];
-        $user->email = $validated['email'];
-        $user->password = Hash::make($validated['password']);
-
-        $user->save();
+        User::create($validated);
 
         $request
             ->session()

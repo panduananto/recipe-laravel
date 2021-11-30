@@ -12,16 +12,13 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'body_comment' => 'required|max:280',
+            'body' => 'required|max:280',
         ]);
 
-        $comment = new Comment();
+        $validated['user_id'] = Auth::id();
+        $validated['recipe_id'] = $request->route('id');
 
-        $comment->body = $validated['body_comment'];
-        $comment->user_id = Auth::id();
-        $comment->recipe_id = $request->route('id');
-
-        $comment->save();
+        Comment::create($validated);
 
         return redirect(route('recipe.show', ['id' => $request->route('id')]));
     }

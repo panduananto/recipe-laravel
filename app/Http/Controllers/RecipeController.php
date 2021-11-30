@@ -17,14 +17,10 @@ class RecipeController extends Controller
 
     public function show($id)
     {
+        $recipe = Recipe::findOrFail($id);
+
         return view('pages.detail')
-            ->with('recipe', Recipe::findOrFail($id))
-            ->with(
-                'comments',
-                Comment::select()
-                    ->where('recipe_id', $id)
-                    ->orderBy('created_at', 'desc')
-                    ->get(),
-            );
+            ->with('recipe', $recipe)
+            ->with('comments', $recipe->comments->sortByDesc('created_at'));
     }
 }

@@ -10,6 +10,16 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'image',
+        'ingredients',
+        'body_text',
+        'category_id',
+        'user_id',
+    ];
+
     protected $casts = [
         'ingredients' => 'array',
         'body_text' => AsRichTextContent::class,
@@ -25,7 +35,7 @@ class Recipe extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function comment()
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }

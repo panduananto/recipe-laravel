@@ -36,12 +36,12 @@
             @csrf
             <div class="flex gap-x-4">
               @auth
-                <div class="flex items-center justify-center w-10 h-10 text-xl font-medium text-white bg-blue-600 rounded-full">
+                <div class="flex items-center justify-center w-10 h-10 text-xl font-medium text-white uppercase bg-blue-600 rounded-full">
                   {{Str::substr(auth()->user()->name, 0, 1)}}
                 </div>
-                <div class="flex-1">
-                  <label for="body_comment"></label>
-                  <textarea name="body_comment" rows="4" placeholder="Add a comment..." class="w-full mb-2 border border-gray-300 rounded-lg"></textarea>
+                <div class="relative flex-1">
+                  <label for="body" class="sr-only">Comment</label>
+                  <textarea name="body" rows="4" placeholder="Add a comment..." class="w-full mb-2 border border-gray-300 rounded-lg"></textarea>
                   <button type="submit" class="w-full px-4 py-2 text-lg text-white bg-blue-600 rounded-lg hover:bg-blue-700">Post</button>
                 </div>
               @else
@@ -53,7 +53,7 @@
             <ul class="space-y-10">
               @foreach($comments as $comment)
               <li class="flex gap-x-4">
-                <div class="flex items-center justify-center w-10 h-10 text-xl font-medium text-white bg-blue-600 rounded-full">
+                <div class="flex items-center justify-center w-10 h-10 text-xl font-medium text-white uppercase bg-blue-600 rounded-full">
                   {{Str::substr($comment->user->name, 0, 1)}}
                 </div>
                 <div class="flex-1">
