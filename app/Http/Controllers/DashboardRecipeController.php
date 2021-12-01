@@ -81,9 +81,9 @@ class DashboardRecipeController extends Controller
             $validated['image'] = $request->file('image')->store('/images/recipes');
         }
 
-        $recipe->user_id = Auth::id();
+        $validated['user_id'] = Auth::id();
 
-        Recipe::create($validated);
+        Recipe::where('id', $id)->update($validated);
 
         return redirect(route('dashboard.recipe.show', ['id' => $id]));
     }
