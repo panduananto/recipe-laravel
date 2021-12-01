@@ -5,7 +5,7 @@
         x-on:click="open = !open"
         type="button" id="profile-button" class="block overflow-hidden"
       >
-        <div class="flex items-center justify-center w-10 h-10 text-xl font-medium text-white bg-blue-600 rounded-full">{{Str::substr(auth()->user()->name, 0, 1)}}</div>
+        <div class="flex items-center justify-center w-10 h-10 text-xl font-medium text-white uppercase bg-blue-600 rounded-full">{{Str::substr(auth()->user()->name, 0, 1)}}</div>
       </button>
       <div
         x-cloak x-show="open" x-transition @click.outside="open = false"

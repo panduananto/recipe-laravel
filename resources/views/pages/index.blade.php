@@ -26,6 +26,7 @@
               </div>
               @endforeach
             </div>
+            {{$recipes->links()}}
           @endif
       </div>
     </div>

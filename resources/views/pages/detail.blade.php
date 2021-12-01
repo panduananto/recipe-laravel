@@ -27,7 +27,7 @@
         {!! $recipe->body_text !!}
       </div>
       <div class="pt-8">
-        <h3 class="mb-8 text-2xl font-bold text-gray-900">Comments ({{count($comments)}})</h3>
+        <h3 class="mb-8 text-2xl font-bold text-gray-900">Comments ({{count($recipe->comments)}})</h3>
         <div class="space-y-8">
           @if(count($comments) == 0)
             <div class="p-4 mb-8 text-center bg-gray-200 rounded-lg ">There is no comments on this recipe.</div>
@@ -42,7 +42,9 @@
                 <div class="relative flex-1">
                   <label for="body" class="sr-only">Comment</label>
                   <textarea name="body" rows="4" placeholder="Add a comment..." class="w-full mb-2 border border-gray-300 rounded-lg"></textarea>
-                  <button type="submit" class="w-full px-4 py-2 text-lg text-white bg-blue-600 rounded-lg hover:bg-blue-700">Post</button>
+                  <button type="submit" class="w-full px-4 py-2 text-lg text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                    Post
+                  </button>
                 </div>
               @else
                 <div>You need to <a href="{{route('login.index')}}" class="font-medium text-blue-600 hover:underline">log in</a> to post a comment</div>
@@ -64,6 +66,11 @@
               </li>
               @endforeach
             </ul>
+            <div class="flex flex-row items-center justify-center">
+              <a href="{{$comments->nextPageUrl()}}" class="px-4 py-2 font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-blue-700">
+                Load more comments
+              </a>
+            </div>
           @endif
         </div>
       </div>

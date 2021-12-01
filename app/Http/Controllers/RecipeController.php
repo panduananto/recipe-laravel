@@ -12,15 +12,16 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        return view('pages.index')->with('recipes', Recipe::all());
+        return view('pages.index')->with('recipes', Recipe::simplePaginate(4));
     }
 
     public function show($id)
     {
         $recipe = Recipe::findOrFail($id);
+        $comments = $recipe->comments->simplePaginate(3);
 
         return view('pages.detail')
             ->with('recipe', $recipe)
-            ->with('comments', $recipe->comments->sortByDesc('created_at'));
+            ->with('comments', $comments);
     }
 }
