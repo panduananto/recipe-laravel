@@ -18,10 +18,7 @@ class RecipeController extends Controller
     public function show($id)
     {
         $recipe = Recipe::findOrFail($id);
-        $comments = $recipe->comments->simplePaginate(3);
 
-        return view('pages.detail')
-            ->with('recipe', $recipe)
-            ->with('comments', $comments);
+        return view('pages.detail')->with('recipe', $recipe);
     }
 }

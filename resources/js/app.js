@@ -50,9 +50,9 @@ Alpine.data('recipeIngredients', function () {
       .as('ingredients')
       .using(sessionStorage),
     async getIngredients(id) {
-      let response = await fetch(`/dashboard/recipe/${id}/ingredients`);
-      let responseJson = await response.json();
-      let ingredients = responseJson[0].ingredients;
+      const response = await fetch(`/recipe/${id}/ingredients`);
+      const responseJson = await response.json();
+      const ingredients = responseJson[0].ingredients;
 
       return ingredients;
     },
@@ -82,6 +82,41 @@ Alpine.data('recipeIngredients', function () {
       );
 
       this.ingredients = ingredientTemp;
+    },
+  };
+});
+
+Alpine.data('recipeComments', function () {
+  return {
+    loading: true,
+    comments: [],
+    async getComments(id) {
+      try {
+        this.loading = true;
+
+        const response = await fetch(`/recipe/${id}/comments`);
+        const responseJson = await response.json();
+
+        this.comments = responseJson;
+      } catch (error) {
+        console.log(error);
+      } finally {
+        this.loading = false;
+      }
+    },
+    async loadMoreComments(id, fromPage) {
+      try {
+        this.loading = true;
+
+        const response = await fetch(`/recipe/${id}/comments?page=${fromPage + 1}`);
+        const responseJson = await response.json();
+
+        this.comments = { ...responseJson, data: [...this.comments.data, ...responseJson.data] };
+      } catch (error) {
+        console.log(error);
+      } finally {
+        this.loading = false;
+      }
     },
   };
 });

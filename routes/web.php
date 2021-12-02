@@ -7,7 +7,9 @@ use App\Http\Controllers\DashboardRecipeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RecipeController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\RecipeCommentController;
+use App\Http\Controllers\RecipeIngredientController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +45,6 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(functi
     Route::get('/recipe/{id}/edit', [DashboardRecipeController::class, 'edit'])->name('recipe.edit');
     Route::put('/recipe/{id}', [DashboardRecipeController::class, 'update'])->name('recipe.update');
     Route::delete('/recipe/{id}', [DashboardRecipeController::class, 'destroy'])->name('recipe.destroy');
-    Route::get('/recipe/{id}/ingredients', [DashboardRecipeController::class, 'getIngredients'])->name('recipe.ingredients');
 });
 
 
@@ -51,5 +52,8 @@ Route::prefix('recipe')->name('recipe.')->group(function() {
     Route::get('/', [RecipeController::class, 'index'])->name('index');
     Route::get('/{id}', [RecipeController::class, 'show'])->name('show');
     
-    Route::post('/comment/{id}', [CommentController::class, 'store'])->name('comment.store');
+    Route::get('/{id}/ingredients', [RecipeIngredientController::class, 'show'])->name('ingredients.show');
+    
+    Route::get('/{id}/comments', [RecipeCommentController::class, 'show'])->name('comments.show');
+    Route::post('/{id}/comments', [RecipeCommentController::class, 'store'])->name('comments.store');
 });
